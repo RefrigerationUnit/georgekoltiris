@@ -148,3 +148,23 @@ html, body {
 .btn:active{
   transform: translateY(0px) scale(0.99);
 }
+
+/* CV page: white background */
+body.page-cv{
+  background: #ffffff;
+  color: #111111;
+}
+
+/* optional: make the sticky top bar readable on white */
+body.page-cv .topbar{
+  background: rgba(255,255,255,0.85);
+  border-bottom: 1px solid rgba(0,0,0,0.12);
+}
+
+body.page-cv .link{
+  color: #111111;
+}
+
+body.page-cv .link:hover{
+  opacity: 0.75;
+}

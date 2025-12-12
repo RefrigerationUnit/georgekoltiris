@@ -19,5 +19,12 @@
       <iframe src="files/portfolio.pdf" class="pdf" title="Portfolio PDF"></iframe>
     </object>
   </main>
+  <script>
+  // On small screens, open the PDF directly in the browser's native viewer
+  if (window.matchMedia("(max-width: 768px)").matches) {
+    window.location.replace("./files/portfolio.pdf");
+  }
+</script>
+
 </body>
 </html>
