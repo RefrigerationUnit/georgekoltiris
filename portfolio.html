@@ -5,6 +5,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Portfolio — George Koltiris</title>
   <link rel="stylesheet" href="styles.css" />
+  <!-- DFlip CSS for styling -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@dearhive/dearflip-jquery-flipbook@1.7.3/dflip/css/dflip.min.css"/>
+  <style>
+    /* Flipbook container should fill below topbar and hint */
+    #flipbookContainer {
+      width: 100%;
+      height: calc(100vh - 80px);
+    }
+
+    /* Hint message styling */
+    .navigation-hint {
+      background-color: #1a1a1a;
+      color: #888;
+      text-align: center;
+      padding: 8px;
+      font-size: 13px;
+      letter-spacing: 0.5px;
+    }
+
+    /* Override DFlip toolbar to dark grey */
+    .df-ui-bar {
+      background-color: #333 !important;
+    }
+    .df-ui-btn {
+      color: #f5f5f5 !important;
+      background-color: #444 !important;
+    }
+    .df-ui-btn:hover {
+      background-color: #666 !important;
+    }
+  </style>
 </head>
 <body>
   <header class="topbar">
@@ -14,17 +45,43 @@
     <a class="link" href="files/portfolio.pdf" download>Download</a>
   </header>
 
-  <main class="viewer">
-    <object data="files/portfolio.pdf" type="application/pdf" class="pdf">
-      <iframe src="files/portfolio.pdf" class="pdf" title="Portfolio PDF"></iframe>
-    </object>
-  </main>
-  <script>
-  // On small screens, open the PDF directly in the browser's native viewer
-  if (window.matchMedia("(max-width: 768px)").matches) {
-    window.location.replace("./files/portfolio.pdf");
-  }
-</script>
+  <!-- Navigation hint -->
+  <div class="navigation-hint">Drag pages or use keyboard arrows ← →</div>
 
+  <!-- Flipbook container -->
+  <div class="_df_book" id="flipbookContainer" source="files/portfolio.pdf" backgroundcolor="#050505"></div>
+
+  <!-- jQuery and DFlip scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@dearhive/dearflip-jquery-flipbook@1.7.3/dflip/js/libs/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@dearhive/dearflip-jquery-flipbook@1.7.3/dflip/js/dflip.min.js"></script>
+
+  <!-- Configure DFlip -->
+  <script>
+    // On small screens, open the PDF directly in the browser's native viewer
+    if (window.matchMedia("(max-width: 768px)").matches) {
+      window.location.replace("./files/portfolio.pdf");
+    }
+
+    jQuery(function($){
+      // Set global default options for DFlip
+      DFLIP.defaults.backgroundColor = "#050505";
+      // Disable WebGL 3D to avoid long loading issues (use 2D flipping)
+      DFLIP.defaults.webgl = false;
+      // Show DFlip's toolbar at the bottom
+      DFLIP.defaults.controlsPosition = DFLIP.CONTROLSPOSITION.BOTTOM;
+
+      // When flipbook is ready, add keyboard navigation
+      DFLIP.defaults.onReady = function(flipbook){
+        var goPrev = function(){ if (flipbook && typeof flipbook.prev === 'function') flipbook.prev(); };
+        var goNext = function(){ if (flipbook && typeof flipbook.next === 'function') flipbook.next(); };
+
+        // Keyboard navigation
+        $(document).on('keydown.dflipNav', function(e){
+          if (e.key === 'ArrowLeft') { e.preventDefault(); goPrev(); }
+          else if (e.key === 'ArrowRight') { e.preventDefault(); goNext(); }
+        });
+      };
+    });
+  </script>
 </body>
 </html>
