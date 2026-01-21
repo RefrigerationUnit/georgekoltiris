@@ -4,61 +4,12 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Portfolio — George Koltiris</title>
+  
   <link rel="stylesheet" href="styles.css" />
-  <!-- DFlip CSS for styling -->
+  
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@dearhive/dearflip-jquery-flipbook@1.7.3/dflip/css/dflip.min.css"/>
-  <style>
-    /* Flipbook container should fill below topbar and hint */
-    #flipbookContainer {
-      width: 100%;
-      height: calc(100vh - 80px);
-    }
-
-    /* Hint message styling */
-    .navigation-hint {
-      background-color: #1a1a1a;
-      color: #888;
-      text-align: center;
-      padding: 8px;
-      font-size: 13px;
-      letter-spacing: 0.5px;
-    }
-
-    /* Override DFlip toolbar to dark grey */
-    .df-ui-bar {
-      background-color: #333 !important;
-    }
-    .df-ui-btn {
-      color: #f5f5f5 !important;
-      background-color: #444 !important;
-    }
-    .df-ui-btn:hover {
-      background-color: #666 !important;
-    }
-
-    /* FORCE UNICODE ARROWS */
-    /* 1. Reset the font-family to a standard text font so the arrow character renders */
-    /* 2. Replace the 'content' with the Unicode arrow */
-    .df-ui-prev::before {
-      content: "←" !important;
-      font-family: system-ui, sans-serif !important;
-      font-size: 24px;
-      line-height: 1;
-    }
-
-    .df-ui-next::before {
-      content: "→" !important;
-      font-family: system-ui, sans-serif !important;
-      font-size: 24px;
-      line-height: 1;
-    }
-    
-    /* Optional: Fix the Close button as well if needed */
-    .df-ui-close::before {
-      content: "✕" !important;
-      font-family: system-ui, sans-serif !important;
-    }
-  </style>
+  
+  <link rel="stylesheet" href="pstyles.css" />
 </head>
 <body>
   <header class="topbar">
@@ -68,17 +19,13 @@
     <a class="link" href="files/portfolio.pdf" download>Download</a>
   </header>
 
-  <!-- Navigation hint -->
   <div class="navigation-hint">Drag pages or use keyboard arrows ← →</div>
 
-  <!-- Flipbook container -->
   <div class="_df_book" id="flipbookContainer" source="files/portfolio.pdf" backgroundcolor="#050505"></div>
 
-  <!-- jQuery and DFlip scripts -->
   <script src="https://cdn.jsdelivr.net/npm/@dearhive/dearflip-jquery-flipbook@1.7.3/dflip/js/libs/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@dearhive/dearflip-jquery-flipbook@1.7.3/dflip/js/dflip.min.js"></script>
 
-  <!-- Configure DFlip -->
   <script>
     // On small screens, open the PDF directly in the browser's native viewer
     if (window.matchMedia("(max-width: 768px)").matches) {

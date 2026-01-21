@@ -1,0 +1,67 @@
+/* --- Flipbook Container --- */
+/* Fills the space below the topbar and the hint text */
+#flipbookContainer {
+  width: 100%;
+  
+  /* INCREASED TO 160px 
+     Equation: 100vh (Screen Height) - 160px (Header + Hint + Desired Bottom Gap)
+     If you want a bigger gap, change 160px to 180px or 200px.
+  */
+  height: calc(100vh - 160px); 
+}
+
+/* --- Hint Message --- */
+.navigation-hint {
+  background-color: #1a1a1a;
+  color: #888;
+  text-align: center;
+  padding: 8px;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+}
+
+/* --- DFlip Toolbar Overrides --- */
+/* Set toolbar background to dark grey */
+.df-ui-bar {
+  background-color: #333 !important;
+}
+
+/* Button Base Styles & Centering */
+.df-ui-btn {
+  color: #f5f5f5 !important;
+  background-color: #444 !important;
+  /* Flexbox ensures the arrows are perfectly centered */
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.df-ui-btn:hover {
+  background-color: #666 !important;
+}
+
+/* --- Arrow & Icon Fixes --- */
+/* 1. Reset font-family so Unicode symbols render */
+.df-ui-prev::before, 
+.df-ui-next::before,
+.df-ui-close::before {
+  font-family: system-ui, -apple-system, sans-serif !important;
+  font-size: 18px !important;
+  line-height: 1 !important;
+  padding-bottom: 2px;
+}
+
+/* 2. Define the specific characters */
+.df-ui-prev::before {
+  content: "←" !important;
+}
+
+.df-ui-next::before {
+  content: "→" !important;
+}
+
+/* Optional: Fix for the Close button */
+.df-ui-close::before {
+  content: "✕" !important;
+  font-size: 16px !important;
+}
