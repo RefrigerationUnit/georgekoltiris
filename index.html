@@ -6,6 +6,24 @@
   <title>George Koltiris</title>
   <link rel="stylesheet" href="styles.css" />
   <style>
+  /* Credit note top-right */
+  .credit-note {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.7);
+    z-index: 3;
+    text-align: right;
+  }
+  .credit-note a {
+    color: rgba(255,255,255,0.9);
+    text-decoration: underline;
+  }
+  .credit-note a:hover {
+    color: #fff;
+  }
+
   /* LinkedIn button pinned to bottom */
   .linkedin-fab{
     position: fixed;
@@ -48,6 +66,9 @@
 
 </head>
 <body>
+    <div class="credit-note">
+      This website was built by Julio. To view the GitHub repo <a href="https://github.com/RefrigerationUnit/georgekoltiris" target="_blank" rel="noopener noreferrer">click here</a>.
+    </div>
     <canvas id="bg-net" aria-hidden="true"></canvas>
     <div id="bg-vignette" aria-hidden="true"></div>
 
